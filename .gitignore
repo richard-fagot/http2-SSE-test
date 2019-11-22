@@ -14,6 +14,7 @@ pyvenv.cfg
 env/
 venv/
 ENV/
+HYPERCORN_ENV/
 env.bak/
 venv.bak/
 pip-selfcheck.json

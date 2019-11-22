@@ -37,13 +37,14 @@ def data():
 def ping_pong():
     return jsonify('pong!')
 
+def eventStream():
+    while True:
+        # wait for source data to be available, then push it
+        yield 'data: {}\n\n'.format(get_message())
+
 # This is SSE part
 @app.route('/stream')
 def stream():
-    def eventStream():
-        while True:
-            # wait for source data to be available, then push it
-            yield 'data: {}\n\n'.format(get_message())
     return Response(eventStream(), mimetype="text/event-stream")
 
 if __name__ == "__main__":
