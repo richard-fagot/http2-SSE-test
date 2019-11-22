@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <!--<script src="{{ url_for('static', filename='js/plotly-latest.min.js') }}"></script>-->
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    </head>
+    <body>
+        <h1>Data Streamer Of The Killing Death</h1>
+
+        <div id="tester" style="width:600px;height:250px;"></div>
+
+    </body>
+
+    <script>
+
+    const userAction = async () => {
+        const response = await fetch('/data');
+        const myJson = await response.json(); //extract JSON from the http response
+        await displayPlot(myJson.x, myJson.y)
+    }
+
+    userAction();
+   
+    function displayPlot(xData, yData) {
+        TESTER = document.getElementById('tester');
+    
+        Plotly.plot( TESTER, [{
+            x: xData,
+            y: yData }] 
+            ,{ margin: { t: 0 } } 
+        );
+
+    };
+    </script>
+</html>
