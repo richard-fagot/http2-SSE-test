@@ -1,7 +1,7 @@
 from flask import Flask, render_template, jsonify, Response
 from random import *
 from flask_cors import CORS
-import time
+import time, json
 
 app = Flask(__name__)
 
@@ -21,6 +21,11 @@ def get_message():
   s = time.ctime(time.time())
   return s
 
+def getData():
+    time.sleep(1.0)
+    x = [1, 2, 3, 4, 5]
+    y = [randint(1,20), randint(1,20), randint(1,20), randint(1,20), randint(1,20)]
+    return json.dumps({'x':x, 'y':y})
 
 @app.route('/')
 def index():
@@ -40,7 +45,7 @@ def ping_pong():
 def eventStream():
     while True:
         # wait for source data to be available, then push it
-        yield 'data: {}\n\n'.format(get_message())
+        yield 'data: {}\n\n'.format(getData())
 
 # This is SSE part
 @app.route('/stream')
