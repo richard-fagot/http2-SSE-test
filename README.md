@@ -2,6 +2,13 @@
  - Python 3.7.3 ;
  - pip 19.1.1.
 
+# TL;DR
+1. Cloner le projet ;
+1. Aller dans `server` et lancer `python run.py` ;
+1. Dans un navigateur `http://localhost:5000/ping` doit répondre *pong* ;
+1. Aller dans `web` et lancer `npm run serve` ;
+1. Dans le navigateur `http://localhost:8080/datastreamerchart` doit afficher l'appli.
+
 # Installation de chocolatey
 
 ## Sous windows 7+
